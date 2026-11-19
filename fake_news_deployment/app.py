@@ -11,8 +11,9 @@ st.set_page_config(
     layout="centered",
 )
 
-MODEL_PATH = Path("model/fake_news_model.pkl")
-VECTORIZER_PATH = Path("model/tfidf_vectorizer.pkl")
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_PATH = BASE_DIR / "model" / "fake_news_model.pkl"
+VECTORIZER_PATH = BASE_DIR / "model" / "tfidf_vectorizer.pkl"
 
 
 @st.cache_resource
@@ -47,7 +48,7 @@ st.info(
 try:
     model, vectorizer = load_artifacts()
 except Exception as exc:
-    st.error(str(exc))
+    st.error(f"{type(exc).__name__}: {exc}")
     st.stop()
 
 news_text = st.text_area(
