@@ -1,0 +1,1 @@
+After running the notebook export cell, place fake_news_model.pkl and tfidf_vectorizer.pkl in this folder.\n
